@@ -6,13 +6,13 @@ public class ContaBancaria {
     }
 
     public void consultaSaldo() {
-        System.out.println("Seu saldo: R$" + saldo);
+        System.out.println("R$ " + saldo);
     }
 
     public void deposito(float valor) {
         if(valor > 0) {
             saldo = saldo + valor;
-            System.out.format("Depósito de R$%f realizado com sucesso \n", valor);
+            System.out.format("Depósito de R$ %f realizado com sucesso \n", valor);
         } else {
             System.out.println("Depósito inválido \n");
         }
@@ -21,7 +21,7 @@ public class ContaBancaria {
     public void saque(float valor){
         if(valor > 0 && valor <= saldo) {
             saldo = saldo - valor;
-            System.out.format("Saque de R$%f realizado com sucesso \n", valor);
+            System.out.format("Saque de R$ %f realizado com sucesso \n", valor);
         } else {
             System.out.println("Saldo insuficiente \n");
         }

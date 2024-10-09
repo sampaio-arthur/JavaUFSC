@@ -15,6 +15,7 @@ public class TesteContaBancaria {
         float valorSaque = scanner.nextFloat();
         conta.saque(valorSaque);
 
+        System.out.println("Seu saldo após as operações é de: ");
         conta.consultaSaldo();
 
         scanner.close();

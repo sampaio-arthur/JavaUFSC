@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class TestaProduto {
@@ -7,7 +6,7 @@ public class TestaProduto {
         Produto produto1 = null;
         Produto produto2 = null;
         int funcao;
-
+      
         do {
             System.out.println("Opção 1 : Criar Produto 1 e Produto 2");
             System.out.println("Opção 2 : Inserir Estoque Produto 1");
@@ -24,7 +23,7 @@ public class TestaProduto {
                     System.out.print("Nome do Produto 1: ");
                     String nome1 = entrada.next();
                     System.out.print("Preço do Produto 1: ");
-                    Float preco1 = entrada.nextFloat();
+                    float preco1 = entrada.nextFloat();
                     System.out.print("Quantidade do Produto 1: ");
                     int quantidade1 = entrada.nextInt();
                     produto1 = new Produto(nome1, preco1, quantidade1);
@@ -32,7 +31,7 @@ public class TestaProduto {
                     System.out.print("Nome do Produto 2: ");
                     String nome2 = entrada.next();
                     System.out.print("Preço do Produto 2: ");
-                    Float preco2 = entrada.nextFloat();
+                    float preco2 = entrada.nextFloat();
                     System.out.print("Quantidade do Produto 2: ");
                     int quantidade2 = entrada.nextInt();
                     produto2 = new Produto(nome2, preco2, quantidade2);
@@ -128,3 +127,4 @@ public class TestaProduto {
         entrada.close();
     }
 }
+

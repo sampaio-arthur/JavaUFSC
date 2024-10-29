@@ -1,9 +1,9 @@
 public class Produto {
     private String nome;
-    private Float preco;
+    private float preco;
     private int quantidade;
 
-    public Produto(String nome, Float preco, int quantidade) {
+    public Produto(String nome, float preco, int quantidade) {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
@@ -46,17 +46,9 @@ public class Produto {
     
     @Override
     public boolean equals(Object obj) {
-        if(this == obj){
-            return true;
-        }
+        Produto produto =  (Produto) obj;
 
-        if(obj == null || !(obj instanceof Produto)){
-            return false;
-        } 
-          
-        Produto outroProduto = (Produto) obj;
-
-        if(this.nome.equals(outroProduto.nome) && this.preco == outroProduto.preco && this.quantidade == outroProduto.quantidade) {
+        if(this.nome.equals(produto.nome) && this.preco == produto.preco && this.quantidade == produto.quantidade) {
             return true;
         } else {
             return false;

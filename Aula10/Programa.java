@@ -58,7 +58,7 @@ public class Programa {
                     break;
             
                 case 2:
-                adicionar(nomes, s);
+                    adicionar(nomes, s);
                     break;
 
                 case 3:

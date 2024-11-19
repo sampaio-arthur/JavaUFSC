@@ -2,7 +2,8 @@ public class Livro {
     private String titulo;
     private String autor;
     private float preco;
-    private int paginas; 
+    private int paginas;
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -44,6 +45,18 @@ public class Livro {
     
     public String toString() {
         return "Título: " + this.titulo + "\nAutor: " + this.autor + "\nPreço: " + this.preco + "\nPáginas: " + this.paginas;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } 
+        if (!(o instanceof Livro)) {
+            return false;
+        }
+        Livro liv = (Livro) o;
+        return this.titulo.equals(liv.titulo) && this.autor.equals(liv.autor);
+
     }
 
 }

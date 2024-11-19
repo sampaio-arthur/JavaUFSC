@@ -4,6 +4,7 @@ public class TestaLivraria {
         Livraria saraiva = new Livraria();
         Livro liv1 = new Livro("Harry Poter", "JK", 49.90f, 200);
         Livro liv2 = new Livro("Viagem ao Centro da Terra", "Júlio Verne", 79.90f, 100);
+        Livro liv3 = new Livro("Viagem ao Centro da Terra", "Júlio Verne", 79.90f, 100);
 
         saraiva.adicionarLivro(liv1);
         saraiva.adicionarLivro(liv2);

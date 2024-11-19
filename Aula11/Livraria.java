@@ -7,7 +7,18 @@ public class Livraria {
     }
 
     public void adicionarLivro(Livro liv) {
-        this.lista.add(liv);
+        if(!(lista.contains(liv))){
+            this.lista.add(liv);
+        } else {
+            System.out.println("Livro já existe!");
+        }
+            
+    }
+
+    public void removeLivro(Livro liv) {
+        if(lista.contains(liv)) {
+            this.lista.remove(liv);
+        } 
     }
 
     public void imprimirLivro() {

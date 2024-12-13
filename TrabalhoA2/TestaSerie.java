@@ -23,20 +23,24 @@ public class TestaSerie {
 
             switch (opcao) {
                 case 1:
+                    try {
+                        System.out.print("Título: ");
+                        String titulo = scanner.nextLine();
+                        System.out.print("Gênero (Comedia, Drama, Romance, Ficcao): ");
+                        String genero = scanner.nextLine();
+                        System.out.print("Número de temporadas: ");
+                        int temporadas = scanner.nextInt();
+                        System.out.print("Ano: ");
+                        int ano = scanner.nextInt();
+                        System.out.print("Concluída (true/false): ");
+                        boolean concluida = scanner.nextBoolean();
 
-                    System.out.print("Título: ");
-                    String titulo = scanner.nextLine();
-                    System.out.print("Gênero (Comédia, Drama, Romance, Ficção): ");
-                    String genero = scanner.nextLine();
-                    System.out.print("Número de temporadas: ");
-                    int temporadas = scanner.nextInt();
-                    System.out.print("Ano: ");
-                    int ano = scanner.nextInt();
-                    System.out.print("Concluída (true/false): ");
-                    boolean concluida = scanner.nextBoolean();
-
-                    SerieTV novaSerie = new SerieTV(titulo, genero, temporadas, ano, concluida);
-                    servico.adicionaSerieTV(novaSerie);
+                        SerieTV novaSerie = new SerieTV(titulo, genero, temporadas, ano, concluida);
+                        servico.adicionaSerieTV(novaSerie);
+                    } catch (Exception e) {
+                        System.out.println("Erro ao cadastrar série: " + e.getMessage());
+                        scanner.nextLine();
+                    }
                     break;
 
                 case 2:
@@ -44,6 +48,24 @@ public class TestaSerie {
                     String tituloAlterar = scanner.nextLine();
                     System.out.print("Ano da série a ser alterada: ");
                     int anoAlterar = scanner.nextInt();
+                    scanner.nextLine();
+
+                    try {
+                        System.out.print("Novo Gênero (Comedia, Drama, Romance, Ficcao): ");
+                        String novoGenero = scanner.nextLine();
+                        System.out.print("Novo Número de Temporadas: ");
+                        int novasTemporadas = scanner.nextInt();
+                        System.out.print("Novo Ano: ");
+                        int novoAno = scanner.nextInt();
+                        System.out.print("Concluída (true/false): ");
+                        boolean novaConclusao = scanner.nextBoolean();
+
+                        SerieTV novaSerie = new SerieTV(tituloAlterar, novoGenero, novasTemporadas, novoAno, novaConclusao);
+                        servico.alterarSerieTV(tituloAlterar, anoAlterar, novaSerie);
+                    } catch (Exception e) {
+                        System.out.println("Erro ao alterar série: " + e.getMessage());
+                        scanner.nextLine();
+                    }
                     break;
 
                 case 3:
@@ -71,7 +93,7 @@ public class TestaSerie {
                     break;
 
                 case 7:
-                    servico.gravar(); 
+                    servico.gravar();
                     System.out.println("Saindo...");
                     break;
 

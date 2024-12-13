@@ -46,24 +46,31 @@ public class ServicoStreaming {
     }
 
     public void carregaDados() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("servicostreaming.csv"))) {
-            String linha;
-            while ((linha = reader.readLine()) != null) {
-                if (!linha.trim().isEmpty()) {
-                    SerieTV stv = new SerieTV("", "", 1, 2020, false);
-                    stv.setSerieTVCSV(linha);
-                    adicionaSerieTV(stv);
+        File file = new File("servicostreaming.csv");
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    if (!linha.trim().isEmpty()) {
+                        try {
+                            SerieTV stv = new SerieTV("", "", 1, 2020, false); 
+                            stv.setSerieTVCSV(linha); 
+                            adicionaSerieTV(stv);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Erro ao carregar série: " + e.getMessage() + ". Linha ignorada: " + linha);
+                        }
+                    }
                 }
+                System.out.println("Dados carregados com sucesso.");
+            } catch (IOException e) {
+                System.out.println("Erro ao carregar dados: " + e.getMessage());
             }
-            System.out.println("Dados carregados com sucesso.");
-        } catch (FileNotFoundException e) {
+        } else {
             System.out.println("Arquivo não encontrado. Iniciando lista vazia.");
-        } catch (IOException e) {
-            System.out.println("Erro ao carregar dados: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao processar linha: " + e.getMessage());
         }
     }
+    
+    
 
     public void listarSeriesTV(String genero) {
         boolean found = false;
@@ -99,5 +106,17 @@ public class ServicoStreaming {
                 System.out.println(serie);
             }
         }
+    }
+
+    public void alterarSerieTV(String titulo, int ano, SerieTV novaSerie) {
+        for (int i = 0; i < lista.size(); i++) {
+            SerieTV serie = lista.get(i);
+            if (serie.getTitulo().equals(titulo) && serie.getAno() == ano) {
+                lista.set(i, novaSerie);
+                System.out.println("Série alterada com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Série não encontrada para alteração.");
     }
 }

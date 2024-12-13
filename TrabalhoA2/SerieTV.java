@@ -5,10 +5,10 @@ public class SerieTV {
 
     public SerieTV(String titulo, String genero, int temporadas, int ano, boolean concluida) {
         setAno(ano);
-        setConcluida(concluida);
         setGenero(genero);
         setTemporadas(temporadas);
         setTitulo(titulo);
+        this.concluida = concluida;
     }
 
     public String getTitulo() {
@@ -24,11 +24,15 @@ public class SerieTV {
     }
 
     public void setGenero(String genero) {
-        if (genero.equals("Comédia") || genero.equals("Drama") || genero.equals("Romance") || genero.equals("Ficção")) {
-            this.genero = genero;
+        String generoNormalizado = genero.trim();
+        if (generoNormalizado.equalsIgnoreCase("Comedia") ||
+            generoNormalizado.equalsIgnoreCase("Drama") ||
+            generoNormalizado.equalsIgnoreCase("Romance") ||
+            generoNormalizado.equalsIgnoreCase("Ficcao")) {
+            this.genero = generoNormalizado;
         } else {
             throw new IllegalArgumentException("Gênero Inválido");
-        }
+        }        
     }
 
     public int getTemporadas() {
@@ -39,7 +43,7 @@ public class SerieTV {
         if (temporadas >= 1) {
             this.temporadas = temporadas;
         } else {
-            throw new IllegalArgumentException("Quantidade Inválida");
+            throw new IllegalArgumentException("Quantidade de temporadas deve ser no mínimo 1");
         }
     }
 
@@ -51,7 +55,7 @@ public class SerieTV {
         if (ano >= 2020) {
             this.ano = ano;
         } else {
-            throw new IllegalArgumentException("Ano não considerado recente");
+            throw new IllegalArgumentException("Ano deve ser 2020 ou posterior");
         }
     }
 
@@ -69,13 +73,12 @@ public class SerieTV {
         if (!(obj instanceof SerieTV)) return false;
 
         SerieTV serieTV = (SerieTV) obj;
-
         return this.titulo.equals(serieTV.titulo) && this.ano == serieTV.ano;
     }
 
     @Override
     public String toString() {
-        return "Título: " + this.titulo + "\nGênero: " + this.genero + "\nTemporadas: " + this.temporadas + "\nAno: " + this.ano + "\nConcluída: " + this.concluida;
+        return "Título: " + titulo + "\nGênero: " + genero + "\nTemporadas: " + temporadas + "\nAno: " + ano + "\nConcluída: " + concluida;
     }
 
     public String getSerieTVCSV() {
@@ -85,9 +88,10 @@ public class SerieTV {
     public void setSerieTVCSV(String linha) {
         String[] campos = linha.split(";");
         setTitulo(campos[0]);
-        setGenero(campos[1]);
+        setGenero(campos[1].trim());
         setTemporadas(Integer.parseInt(campos[2]));
         setAno(Integer.parseInt(campos[3]));
         setConcluida(Boolean.parseBoolean(campos[4]));
     }
+    
 }
